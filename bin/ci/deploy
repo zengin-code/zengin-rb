@@ -12,6 +12,7 @@ cat > $HOME/.gem/credentials << EOF
 ---
 :rubygems_api_key: ${RUBYGEMS_API_KEY}
 EOF
+chmod 600 $HOME/.gem/credentials
 
 git commit -a -m "Update: ${CI_RELEASE_VERSION}"
 git push --all
