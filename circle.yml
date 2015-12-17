@@ -13,3 +13,9 @@ dependencies:
 test:
   override:
     - echo "No Real Tests"
+
+deployment:
+  release:
+    branch: master
+    commands:
+      - ./bin/ci/deploy

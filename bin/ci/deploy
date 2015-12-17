@@ -1,0 +1,17 @@
+#!/bin/bash
+
+[ "${RELEASE_BUILD}" != "TRUE" ] && exit 0
+
+git config user.email "zeny-man@zeny.io"
+git config user.name "zeny-man"
+
+CI_RELEASE_VERSION=`date +"v%Y-%m-%d"`
+
+mkdir -p $HOME/.gem
+cat > $HOME/.gem/credentials << EOF
+---
+:rubygems_api_key: ${RUBYGEMS_API_KEY}
+EOF
+
+git commit -a -m "Update: ${CI_RELEASE_VERSION}"
+bundle exec rake release
