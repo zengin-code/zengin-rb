@@ -1,6 +1,6 @@
 # ZenginCode
 
-[![Circle CI](https://circleci.com/gh/zengin-code/zengin-rb.svg?style=svg)](https://circleci.com/gh/zengin-code/zengin-rb)
+[![Circle CI](https://img.shields.io/circleci/project/zengin-code/zengin-rb.svg)](https://circleci.com/gh/zengin-code/zengin-rb)
 [![Gem Version](https://badge.fury.io/rb/zengin_code.svg)](http://badge.fury.io/rb/zengin_code)
 
 The ruby implementation of ZenginCode.
