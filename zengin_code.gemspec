@@ -14,7 +14,9 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/zengin-code/zengin-rb"
   spec.license       = "MIT"
 
+  data_files = Dir['source-data/data/**/*.json']
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         += data_files
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
