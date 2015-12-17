@@ -16,5 +16,4 @@ EOF
 git commit -a -m "Update: ${CI_RELEASE_VERSION}"
 git push --all
 
-exit 0
 bundle exec rake release
