@@ -1,0 +1,15 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.2.3
+
+dependencies:
+  cache_directories:
+  pre:
+    - gem update bundler
+    - git submodule update --init
+
+test:
+  override:
+    - echo "No Real Tests"
