@@ -15,6 +15,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   data_files = Dir['source-data/data/**/*.json']
+  data_files += %w(source-data/data/updated_at source-data/data/md5)
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.files         += data_files
   spec.bindir        = "exe"
