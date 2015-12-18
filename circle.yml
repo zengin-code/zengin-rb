@@ -9,6 +9,7 @@ dependencies:
   pre:
     - gem update bundler
     - git submodule update --init
+    - git submodule foreach 'git pull origin master'
 
 test:
   override:
