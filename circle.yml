@@ -2,12 +2,12 @@ machine:
   timezone:
     Asia/Tokyo
   ruby:
-    version: 2.2.3
+    version: 2.3.0
 
 dependencies:
   cache_directories:
   pre:
-    - gem update bundler
+    - gem install bundler
     - git submodule update --init
     - git submodule foreach 'git pull origin master'
 
