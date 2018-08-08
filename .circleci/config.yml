@@ -1,0 +1,32 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/zengin-rb
+    docker:
+      - image: circleci/ruby:latest
+    steps:
+      - checkout
+      - run:
+          name: Checkout source-data
+          command: |
+            git submodule update --init
+            git submodule foreach 'git pull origin master'
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ .Branch }}-{{ checksum "Gemfile" }}
+            - v1-bundle-{{ .Branch }}-
+      - run:
+          name: Dependency
+          command: |
+            gem install --no-document bundler
+            bundle install --jobs=8 --path=vendor
+      - save_cache:
+          key: v1-bundle-{{ .Branch }}-{{ checksum "Gemfile" }}
+          paths:
+            - ~/zengin-rb/.bundle
+            - ~/zengin-rb/vendor/bundle
+      - run:
+          name: Deployment
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then ./bin/ci/deploy ; fi
