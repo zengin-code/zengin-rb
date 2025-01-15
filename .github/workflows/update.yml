@@ -26,8 +26,7 @@ jobs:
 
       - name: Checkout source-data
         run: |
-          git submodule update --init
-          git submodule foreach 'git pull --ff-only origin master'
+          git submodule update --remote
 
       - name: Deploy
         if: github.ref == 'refs/heads/master'
