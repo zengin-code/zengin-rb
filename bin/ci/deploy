@@ -10,7 +10,7 @@ CI_RELEASE_VERSION=`date +"v%Y-%m-%d"`
 #   exit 0
 # fi
 
-git commit -a -m "Update: ${CI_RELEASE_VERSION}"
-git push --all
+# git commit -a -m "Update: ${CI_RELEASE_VERSION}"
+# git push --all
 
 bundle exec rake release
