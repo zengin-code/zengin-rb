@@ -1,9 +1,7 @@
 #!/bin/bash
 
-[ "${RELEASE_BUILD}" != "TRUE" ] && exit 0
-
-git config user.email "zeny-man@zeny.io"
-git config user.name "zeny-man"
+git config user.name  "github-actions[bot]"
+git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 CI_RELEASE_VERSION=`date +"v%Y-%m-%d"`
 
@@ -13,6 +11,11 @@ cat > $HOME/.gem/credentials << EOF
 :rubygems_api_key: ${RUBYGEMS_API_KEY}
 EOF
 chmod 600 $HOME/.gem/credentials
+
+if [ `git status -s` -eq '' ]; then
+  echo "No changes to commit"
+  exit 0
+fi
 
 git commit -a -m "Update: ${CI_RELEASE_VERSION}"
 git push --all

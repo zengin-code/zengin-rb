@@ -1,0 +1,34 @@
+name: update
+
+on:
+  push:
+
+  schedule:
+    # Run at 12:00 JST
+    - cron: '0 3 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+
+      - name: Checkout source-data
+        run: |
+          git submodule update --init
+          git submodule foreach 'git pull origin master'
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        run: ./bin/ci/deploy
+        with:
+          env:
+            RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
