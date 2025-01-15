@@ -29,6 +29,5 @@ jobs:
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         run: ./bin/ci/deploy
-        with:
-          env:
-            RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        env:
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
